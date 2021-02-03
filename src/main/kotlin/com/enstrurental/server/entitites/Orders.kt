@@ -13,7 +13,7 @@ data class Orders(
         val id: Int,
         @CreatedDate
         val order_date: LocalDateTime = LocalDateTime.now(),
-        val instrument: Instruments,
+        val instrument: Products,
         val client : Clients,
         val renter: Renters,
         var delivery_type: String,
