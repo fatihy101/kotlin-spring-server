@@ -22,8 +22,8 @@ class ProductsController(val productsRepository: ProductsRepository) {
     }
 
     @CrossOrigin
-    @PostMapping("/create")
-    fun createProduct(@RequestBody product : Products): Mono<ResponseEntity<Products>>
+    @PostMapping("/save")
+    fun saveProduct(@RequestBody product : Products): Mono<ResponseEntity<Products>>
     = productsRepository.save(product)
             .map { response -> ResponseEntity.ok(response) }
             .defaultIfEmpty(ResponseEntity.notFound().build())
