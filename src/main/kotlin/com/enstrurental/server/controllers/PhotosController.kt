@@ -18,7 +18,7 @@ class PhotosController (val photoService: PhotoService) {
     @CrossOrigin
     @PostMapping("/save")
     fun savePhoto(@RequestPart("id") id: String,
-                  @RequestPart("image") image: Flux<Part>) : Flux<String>  = image
+                  @RequestPart("image") image: Mono<Part>) : Mono<String>  = image
         .filter { part -> part is FilePart }
         .ofType(FilePart::class.java)
         .flatMap { data -> photoService.addPhoto(id, data) }
