@@ -31,7 +31,7 @@ class GridFsConfiguration {
 class GridFsController(private val gridFsTemplate: ReactiveGridFsTemplate?) {
     // To update, first delete and then upload
     @CrossOrigin
-    @PostMapping("")
+    @PostMapping("save")
     fun upload(@RequestPart fileParts: Mono<FilePart>): Mono<ResponseEntity<*>>? {
         return fileParts
             .flatMap { part: FilePart ->
@@ -40,7 +40,7 @@ class GridFsController(private val gridFsTemplate: ReactiveGridFsTemplate?) {
                     part.filename()
                 )
             }
-            .map { id: ObjectId -> ResponseEntity.ok().body("id: ${id.toHexString()}") }
+            .map { id: ObjectId -> ResponseEntity.ok().body(id.toHexString()) }
     }
 
     @CrossOrigin
