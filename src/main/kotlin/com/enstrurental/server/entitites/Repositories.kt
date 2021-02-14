@@ -25,6 +25,3 @@ interface AddressesRepository: ReactiveMongoRepository<Addresses, Int>{
 
 @Repository
 interface AllUsersRepository: ReactiveMongoRepository<AllUsers, String>
-
-@Repository
-interface PhotosRepository: ReactiveMongoRepository<Photos, String>
